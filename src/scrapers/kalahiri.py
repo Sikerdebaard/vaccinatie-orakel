@@ -15,6 +15,7 @@ for k, v in data.items():
 cols = ['persons_fully_vaccinated', 'persons_single_dose']
 df = pd.DataFrame.from_dict(data, orient='index').T.set_index('date')[cols]
 df.index = [x.replace(year=2021) for x in pd.to_datetime(df.index, format='%d/%m')]
+df.index = df.index - pd.Timedelta(days=1)
 
 df = df.rename(columns={
     'persons_fully_vaccinated': 'people_fully_vaccinated',
