@@ -2,6 +2,10 @@ import pandas as pd
 import requests
 import pandas as pd
 from pathlib import Path
+import matplotlib as mpl
+
+mpl.rcParams['figure.dpi'] = 300
+
 
 req = requests.get('https://www.corona-lokaal.nl/getvaccines.php')
 req.raise_for_status()
@@ -11,22 +15,24 @@ data = req.json()['NL']
 # Dutch number format to machine-readable
 for k, v in data.items():
     data[k] = v.replace('.', '').replace(',', '.')
-  
+    
+
 cols = ['persons_fully_vaccinated', 'persons_single_dose']
 df = pd.DataFrame.from_dict(data, orient='index').T.set_index('date')[cols]
 df.index = [x.replace(year=2021) for x in pd.to_datetime(df.index, format='%d/%m')]
-df.index = df.index - pd.Timedelta(days=1)
 
 df = df.rename(columns={
     'persons_fully_vaccinated': 'people_fully_vaccinated',
-    'persons_single_dose': 'people_vaccinated',
+    #'persons_single_dose': 'people_vaccinated',
 })
 
 df = df.astype(float)
+df['people_vaccinated'] = df[['people_fully_vaccinated', 'persons_single_dose']].sum(axis=1)
+df = df.drop(columns=['persons_single_dose'])
 df['total_vaccinations'] = df.sum(axis=1)
 df = df.astype(pd.Int64Dtype())
 
-outdir = Path('data/models')
+outdir = Path('')
 outfile = outdir / 'kalahiri.csv'
 
 if outfile.exists():

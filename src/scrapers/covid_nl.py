@@ -12,7 +12,7 @@ csvfiles = [csvfile.name for csvfile in r.get_contents("data/vaccine_estimate/da
 
 baseurl = 'https://raw.githubusercontent.com/Sikerdebaard/opencoronastats/master/data/vaccine_estimate/daily_estimates/'
 
-cols = ['vaccinated', 'fully_vaccinated', 'single_dose_vaccinated']
+cols = ['vaccinated', 'fully_vaccinated']
 df_estimates = pd.DataFrame(index=pd.to_datetime([]))
 for csvfile in csvfiles:
     if 'vaccinated-estimate' not in csvfile:
@@ -34,11 +34,11 @@ df_estimates = df_estimates.sort_index().resample('D').last().ffill().round(0)
 df_estimates = df_estimates.astype(pd.Int64Dtype())
 
 df_estimates = df_estimates.rename(columns={
-    'vaccinated': 'total_vaccinations',
+    'vaccinated': 'people_vaccinated',
     'fully_vaccinated': 'people_fully_vaccinated',
-    'single_dose_vaccinated': 'people_vaccinated',
 })
 
+df_estimates['total_vaccinations'] = df_estimates.sum(axis=1)
 
 outdir = Path('data/models')
 outfile = outdir / 'covid_nl.csv'
