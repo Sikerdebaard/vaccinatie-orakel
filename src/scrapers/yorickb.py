@@ -30,6 +30,7 @@ df_estimates = df_estimates.sort_index().resample('D').last()
 
 df_estimates['total_vaccinations'] = df_estimates.sum(axis=1)
 df_estimates = df_estimates.astype(pd.Int64Dtype())
+df_estimates.index = df_estimates.index - pd.Timedelta(days=1)
 
 outdir = Path('data/models')
 outfile = outdir / 'yorickb.csv'
