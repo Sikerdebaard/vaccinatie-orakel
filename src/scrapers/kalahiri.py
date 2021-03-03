@@ -32,7 +32,7 @@ df = df.drop(columns=['persons_single_dose'])
 df['total_vaccinations'] = df.sum(axis=1)
 df = df.astype(pd.Int64Dtype())
 
-outdir = Path('')
+outdir = Path('data/models')
 outfile = outdir / 'kalahiri.csv'
 
 if outfile.exists():
