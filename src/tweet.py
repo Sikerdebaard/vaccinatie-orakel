@@ -44,3 +44,6 @@ tweetscache['latest-tweet'] = {
     'id': tweet.id,
     'timestamp': str(pd.to_datetime(datetime.now())),
 }
+
+with open(tweetscachefile, 'w') as fh:
+    json.dump(tweetscache, fh)
