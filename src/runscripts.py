@@ -19,3 +19,6 @@ for script in Path('src/scrapers').glob('*.py'):
     retval = os.system(f'python src/plotmodel.py --model={modelfile} --outfile={outimage} --title="@{script.stem} estimate"')
     assert retval == 0
     assert outimage.exists()
+
+retval = os.system('python src/ensemble_and_plot.py')
+assert retval == 0
