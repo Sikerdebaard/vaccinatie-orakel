@@ -32,7 +32,7 @@ Kwantitatieve metrics die een beeld geven hoe correct het ensemble en de verschi
 `mean_squared_log_error` [https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)  
 `r2` [https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.htm](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.htm)  
 `MAE` [https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)  
-`MSE` [https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)
+`MSE` [https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)  
 `RMSE` Square Root of MSE  
 
 ### [data/models](data/models)
