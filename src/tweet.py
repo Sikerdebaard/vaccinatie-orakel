@@ -3,8 +3,16 @@ import os
 import json
 from pathlib import Path
 from tweets import basictweet
-from datetime import datetime
 import pandas as pd
+import pytz
+from datetime import datetime, time
+
+
+tz = pytz.timezone('Europe/Amsterdam')
+ams_now = datetime.now(tz)
+if ams_now.time() < time(hour=20, minute=30):
+    print('Its not past 20:30 yet in AMS')
+    raise SystemExit(0)
 
 
 tweetscachefile = Path('data/oracle-tweets.json')
