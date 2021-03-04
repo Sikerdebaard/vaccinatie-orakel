@@ -1,4 +1,4 @@
-![AutoUpdate](https://github.com/Sikerdebaard/netherlands-vaccinations-scraper/workflows/AutoUpdate/badge.svg)
+![AutoUpdate](https://github.com/Sikerdebaard/vaccinatie-orakel/workflows/AutoUpdate/badge.svg)
 
 # Het vaccinatie orakel
 Een ensemble aan modellen die de vaccinatiegraad voorspellen.
