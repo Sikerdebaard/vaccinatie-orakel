@@ -199,7 +199,7 @@ df_tmp = df_stats.copy()
 df_tmp.columns = [x.replace('people_', '') for x in df_tmp.columns]
 df_tmp = df_tmp[[x for x in df_tmp.columns if 'total_vaccinations' not in x]]
 df_tmp[sorted(df_tmp.columns)]
-model_to_chart(df_tmp.astype(float), df_nl, 'data/ensemble.png', 'Ensemble ' + ' '.join(sorted(twitter_users)), subtitle=f'Estimates for {df_tmp.index[-1]}')
+model_to_chart(df_tmp.astype(float), df_nl, 'data/ensemble.png', 'Ensemble ' + ' '.join(sorted(twitter_users)), f'Estimates up to {df_tmp.index[-1].date()}')
 #df_tmp
 
 
