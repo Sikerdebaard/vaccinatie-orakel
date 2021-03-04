@@ -28,5 +28,5 @@ Kwantitatieve metrics die een beeld geven hoe correct het ensemble en de verschi
 De csv bestanden in deze folder zijn de outputs van de individuele modellen. Deze worden in een ensemble samengevoegd.  
 
 `total_vaccinations` aantal doses geinjecteerd  
-`people_vaccinated` aantal mensen dat tenminste een prik heeft ontvangen  
+`people_vaccinated` aantal mensen die tenminste een prik hebben ontvangen  
 `people_fully_vaccinated` aantal mensen volledig gevaccineerd  
