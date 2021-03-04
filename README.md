@@ -3,7 +3,7 @@
 # Het vaccinatie orakel
 Een ensemble aan modellen die de vaccinatiegraad voorspellen.
 
-## Nieuwste versie van het orakel
+## Meest recente voorspelling van het orakel
 ![data/ensemble.png](data/ensemble.png)
 [data/ensemble.csv]()
 
