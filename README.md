@@ -27,7 +27,7 @@ Kwantitatieve metrics die een beeld geven hoe correct het ensemble en de verschi
 `MAE` [https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)  
 `MSE` [https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)  
 `RMSE` Square Root of MSE  
-`count_datapoints` het aantal datapunten dat bruikbaar waren voor deze metrics  
+`count_datapoints` het aantal datapunten dat zijn gebruikt voor deze metrics  
 
 ### [data/intersect-metrics.csv](data/intersect-metrics.csv)
 Kwantitatieve metrics die een beeld geven hoe correct het ensemble en de verschillende modellen zijn. Het verschil tussen deze metrics en de hierboven genoemde metrics is dat de metrics alleen berekend worden over datapunten waarvoor alle modellen een voorspelling hebben.
@@ -39,7 +39,7 @@ Kwantitatieve metrics die een beeld geven hoe correct het ensemble en de verschi
 `MAE` [https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)  
 `MSE` [https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)  
 `RMSE` Square Root of MSE  
-`count_datapoints` het aantal datapunten dat bruikbaar waren voor deze metrics  
+`count_datapoints` het aantal datapunten dat zijn gebruikt voor deze metrics  
 
 ### [data/models](data/models)
 De csv bestanden in deze folder zijn de outputs van de individuele modellen. Deze worden in een ensemble samengevoegd.  
