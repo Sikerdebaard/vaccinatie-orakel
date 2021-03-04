@@ -250,6 +250,7 @@ for col in statscols:
         results[col][model]['count_datapoints'] = len(intersect)
     
 df_metrics = pd.DataFrame(results['people_fully_vaccinated'])
+df_metrics.index.rename('metric', inplace=True)
 df_metrics.to_csv('data/metrics.csv')
 
 with open('data/metrics.json', 'w') as fh:

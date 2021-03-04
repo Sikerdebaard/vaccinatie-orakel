@@ -1,4 +1,4 @@
-,ensemble,@covid_nl,@kalahiri,@yorickb
+metric,ensemble,@covid_nl,@kalahiri,@yorickb
 explained_variance,0.9934,0.9842,0.9825,0.9928
 mean_squared_log_error,0.0514,0.047,0.1206,0.0085
 r2,0.9932064434381506,0.9838131100552171,0.9817537108682587,0.992736891643645
