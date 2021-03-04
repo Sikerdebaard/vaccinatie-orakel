@@ -275,5 +275,5 @@ for col in statscols:
         
 df_intersect_metrics = pd.DataFrame(results['people_fully_vaccinated'])
 df_intersect_metrics = df_intersect_metrics.T
-df_metrics.index.rename('model', inplace=True)
-df_metrics.to_csv('data/intersect-metrics.csv')
+df_intersect_metrics.index.rename('model', inplace=True)
+df_intersect_metrics.to_csv('data/intersect-metrics.csv')
