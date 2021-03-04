@@ -31,6 +31,7 @@ df['people_vaccinated'] = df[['people_fully_vaccinated', 'persons_single_dose']]
 df = df.drop(columns=['persons_single_dose'])
 df['total_vaccinations'] = df.sum(axis=1)
 df = df.astype(pd.Int64Dtype())
+df.index = df.index - pd.Timedelta(days=1)
 
 outdir = Path('data/models')
 outfile = outdir / 'kalahiri.csv'
