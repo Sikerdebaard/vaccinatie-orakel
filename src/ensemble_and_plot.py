@@ -240,20 +240,40 @@ for col in statscols:
         results[col] = {}
         
     intersect = set(df_gt[col].index) & set(df_stats[col].index)
+    overall_intersect = intersect.copy()
     results[col]['ensemble'] = regression_results(df_gt[col].loc[intersect].values.astype(int), df_stats[col].loc[intersect].astype(int))
     results[col]['ensemble']['count_datapoints'] = len(intersect)
     
     for model in df_merged[col].columns:
         df_tmp = df_merged[col, model].dropna()
         intersect = set(df_gt[col].index) & set(df_tmp.index)
+        overall_intersect &= intersect
         results[col][model] = regression_results(df_gt[col].loc[intersect].values.astype(int), df_tmp.loc[intersect].astype(int))
         results[col][model]['count_datapoints'] = len(intersect)
     
 df_metrics = pd.DataFrame(results['people_fully_vaccinated'])
-df_metrics.index.rename('metric', inplace=True)
+df_metrics = df_metrics.T  # transpose, things are easier to compare when they are on top of eachother instead of next to eachother
+df_metrics.index.rename('model', inplace=True)
 df_metrics.to_csv('data/metrics.csv')
 
 with open('data/metrics.json', 'w') as fh:
     json.dump(results, fh)
     
-df_metrics
+
+results = {}
+for col in statscols:
+    if col not in results:
+        results[col] = {}
+        
+    results[col]['ensemble'] = regression_results(df_gt[col].loc[overall_intersect].values.astype(int), df_stats[col].loc[overall_intersect].astype(int))
+    results[col]['ensemble']['count_datapoints'] = len(overall_intersect)
+    
+    for model in df_merged[col].columns:
+        df_tmp = df_merged[col, model].dropna()
+        results[col][model] = regression_results(df_gt[col].loc[overall_intersect].values.astype(int), df_tmp.loc[overall_intersect].astype(int))
+        results[col][model]['count_datapoints'] = len(overall_intersect)
+        
+df_intersect_metrics = pd.DataFrame(results['people_fully_vaccinated'])
+df_intersect_metrics = df_intersect_metrics.T
+df_metrics.index.rename('model', inplace=True)
+df_metrics.to_csv('data/intersect-metrics.csv')
