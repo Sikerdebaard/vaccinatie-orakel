@@ -25,9 +25,10 @@ else:
 
 
 if 'latest-tweet' in tweetscache:
-    threshold = pd.to_datetime(datetime.now()) - pd.Timedelta(hours=2)
-    if pd.to_datetime(tweetscache['latest-tweet']['timestamp']) > threshold:
-        print('Exiting, last tweet generated < 2 hrs ago')
+    #threshold = pd.to_datetime(datetime.now()) - pd.Timedelta(hours=2)
+    #if pd.to_datetime(tweetscache['latest-tweet']['timestamp']) > threshold:
+    if pd.to_datetime(tweetscache['latest-tweet']['timestamp']).date() == pd.to_datetime(datetime.now()).date():
+        print('Exiting, tweet already generated')
         raise SystemExit(0)
 
 secrets = json.loads(os.environ['TWEEPY_SECRETS'])
