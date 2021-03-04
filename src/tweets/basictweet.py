@@ -40,6 +40,7 @@ def generate():
     tweet = f"""🧙✨🔮 Het orakel kijkt diep in de kristallen bol en ziet daar een grafiek verschijnen:
 
     {progressbar(pct_vaccinated)} van de Nederlanders is gevaccineerd
+
     {progressbar(pct_grownups)} van de volwassenen is gevaccineerd"""
 
     return [tweet], [[]]
