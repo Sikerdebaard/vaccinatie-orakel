@@ -22,3 +22,6 @@ for script in Path('src/scrapers').glob('*.py'):
 
 retval = os.system('python src/ensemble_and_plot.py')
 assert retval == 0
+
+retval = os.system('python src/tweet.py')
+assert retval == 0
