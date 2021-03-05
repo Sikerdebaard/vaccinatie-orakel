@@ -1,7 +1,7 @@
 ![AutoUpdate](https://github.com/Sikerdebaard/vaccinatie-orakel/workflows/AutoUpdate/badge.svg)
 
 # Het vaccinatie orakel
-Een ensemble aan modellen die de vaccinatiegraad voorspellen.
+Een ensemble aan modellen die de vaccinatiegraad voorspellen. Het Orakel verzamelt voorspellingen uit verschillende databronnen en middelt deze.
 
 ## Meest recente voorspelling van het orakel
 ![data/ensemble.png](data/ensemble.png)
