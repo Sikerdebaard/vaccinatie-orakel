@@ -1,4 +1,5 @@
 import cbsodata
+import random
 import pandas as pd
 from utils.formatting import progressbar
 from utils.plotting import pie_for_pct
@@ -37,10 +38,18 @@ def generate():
     pct_vaccinated = latest_people_vaccinated / popsize * 100
     pct_grownups = latest_people_vaccinated / grownups * 100
 
-    tweet = f"""🧙✨🔮 Het orakel kijkt diep in de kristallen bol en ziet daar een grafiek verschijnen:
+    twitter_handles = ['@covid_nl', '@kalahiri', '@YorickB']
+    two_random_handles = random.sample(twitter_handles, 2)
+    headers = [
+        f'🧙✨🔮 Het orakel kijkt diep in de kristallen bol en ziet daar een grafiek verschijnen:',
+        f'🧙✨🔮 Het orakel kijkt diep in de kristallen bol. {two_random_handles[0]} denkt er zo over en {two_random_handles[1]} weer net wat anders.'
+    ]
+    
+    tweet = f"""{headers[1]}
 
-    {progressbar(pct_vaccinated)} van de Nederlanders is gevaccineerd
+Gevaccineerd met ten minste een dosis:
+{progressbar(pct_vaccinated)} van de Nederlanders
 
-    {progressbar(pct_grownups)} van de volwassenen is gevaccineerd"""
+{progressbar(pct_grownups)} van de volwassenen""".strip()
 
     return [tweet], [[]]
