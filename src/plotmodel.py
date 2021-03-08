@@ -11,7 +11,10 @@ def main(model, outfile, title=None, subtitle=None):
     ax = df_estimates.plot()
     if title:
         ax.set_title(title)
-    ax.get_figure().savefig(outfile, dpi=300)
+
+    fig = ax.get_figure()
+    fig.tight_layout()
+    fig.savefig(outfile, dpi=300)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Plots a model')
