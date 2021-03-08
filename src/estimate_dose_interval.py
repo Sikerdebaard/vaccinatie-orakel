@@ -71,4 +71,6 @@ ax = df_intervals.plot(grid=True, style=style, figsize=(8,4), alpha=.7)
 ax.set_title('KNN Estimated dose interval')
 ax.set_ylabel('days')
 
-ax.get_figure().savefig('data/estimated_dose_interval.png', dpi=300)
+fig = ax.get_figure()
+fig.tight_layout()
+fig.savefig('data/estimated_dose_interval.png', dpi=300)
