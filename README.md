@@ -5,7 +5,11 @@ Een ensemble aan modellen die de vaccinatiegraad voorspellen. Het Orakel verzame
 
 ## Meest recente voorspelling van het orakel
 ![data/ensemble.png](data/ensemble.png)
-[data/ensemble.csv]()
+[data/ensemble.csv](data/ensemble.csv)
+
+## Schatting gemiddelde dosis-interval over alle vaccinaties
+![data/estimated_dose_interval.png](data/estimated_dose_interval.png)
+[data/estimated_dose_interval.csv](data/estimated_dose_interval.csv)
 
 ## Uitleg databestanden
 Voor de scope van deze readme houden we het bij het documenteren van de csv bestanden. Soms zijn er gelijknamige png bestanden, dit zijn vaak grafieken die de data inzichtelijk trachten te maken. Ook kan het voorkomen dat er een gelijknamige json te vinden is. Die bevatten vaak dezelfde data als de gelijknamige csv. Wij geven geen garantie dat de jsons in de toekomst blijven bestaan, gebruik daarom dus de csv bestanden.
