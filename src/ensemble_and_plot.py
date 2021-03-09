@@ -4,6 +4,34 @@
 import pandas as pd
 from pathlib import Path
 
+
+def weighted_mean(data, df_weights):
+    df_data = data.copy()
+
+    df_out = pd.DataFrame()
+    df_participants = pd.DataFrame()
+    for col in df_data.columns:
+        values = df_data[col].dropna()
+        keys = values.keys()
+        if keys.shape[0] == 1:
+            df_out.at['mean', col] = values[0]
+        else:
+            if keys.shape[0] == df_data.index.shape[0]:
+                df_adjusted_weights = df_weights.copy()
+            else:
+                df_adjusted_weights = df_weights.T[keys].T
+                df_adjusted_weights = df_adjusted_weights / df_adjusted_weights.sum()
+
+            for idx in keys:
+                if col not in df_out.columns:
+                    df_out.at['mean', col] = df_data.at[idx, col] * df_adjusted_weights.at[idx, 'weights']
+                else:
+                    df_out.at['mean', col] += df_data.at[idx, col] * df_adjusted_weights.at[idx, 'weights']
+        df_participants.at['participants', col] = ', '.join(keys)
+
+    return df_out, df_participants
+
+
 df_merged = pd.DataFrame(index=pd.to_datetime([]))
 twitter_users = []
 for modelfile in Path('data/models').glob('*.csv'):
@@ -31,12 +59,16 @@ df_merged.astype(pd.Int64Dtype())
 
 # In[3]:
 
+df_weights = pd.read_csv('data/weights.csv', index_col=0)
 
 df_stats = pd.DataFrame(index=pd.to_datetime([]))
 
 for col in df_merged.columns.get_level_values(0).unique():
     df_calc = df_merged[col].T.describe().T[[f'min', 'max', 'mean']]
-    #df_calc.columns = [(col, x) for x in df_calc.columns]
+
+    # calculate a weighted mean instead of the true mean
+    df_calc['mean'] = weighted_mean(df_merged[col].T, df_weights)[0].T
+
     df_calc.columns = [f'{col}_{x}' if x != 'mean' else f'{col}' for x in df_calc.columns]
     
     df_stats = df_stats.join(df_calc, how='outer')
