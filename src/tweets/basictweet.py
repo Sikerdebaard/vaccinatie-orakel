@@ -52,4 +52,4 @@ Gevaccineerd met ten minste een dosis:
 
 {progressbar(pct_grownups)} van de volwassenen""".strip()
 
-    return [tweet], [[]]
+    return [tweet, 'https://twitter.com/vaccinorakel/status/1367747721671675910'], [[]]

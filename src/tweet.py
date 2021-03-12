@@ -48,3 +48,7 @@ tweetscache['latest-tweet'] = {
 
 with open(tweetscachefile, 'w') as fh:
     json.dump(tweetscache, fh)
+
+if len(tweets) > 1:
+    for i in range(1, len(tweets)):
+        tweet = api.update_status(tweets[i], in_reply_to_status_id=tweet.id, auto_populate_reply_metadata=True)
