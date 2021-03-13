@@ -26,5 +26,8 @@ assert retval == 0
 retval = os.system('python src/estimate_dose_interval.py')
 assert retval == 0
 
+retval = os.system('python src/compare-div-by-two-strat.py')
+assert retval == 0
+
 retval = os.system('python src/tweet.py')
 assert retval == 0
