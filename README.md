@@ -11,6 +11,10 @@ Een ensemble aan modellen die de vaccinatiegraad voorspellen. Het Orakel verzame
 ![data/estimated_dose_interval.png](data/estimated_dose_interval.png)
 [data/estimated_dose_interval.csv](data/estimated_dose_interval.csv)
 
+## Verhouding RIVM/LNAZ data vs. ensemble / orakel vs. 'deel aantal doses door twee'-strategie
+![data/comparison-ensemble-vs-divbytwo.png](data/comparison-ensemble-vs-divbytwo.png)
+[data/comparison-ensemble-vs-divbytwo.csv](data/comparison-ensemble-vs-divbytwo.csv)
+
 ## Uitleg databestanden
 Voor de scope van deze readme houden we het bij het documenteren van de csv bestanden. Soms zijn er gelijknamige png bestanden, dit zijn vaak grafieken die de data inzichtelijk trachten te maken. Ook kan het voorkomen dat er een gelijknamige json te vinden is. Die bevatten vaak dezelfde data als de gelijknamige csv. Wij geven geen garantie dat de jsons in de toekomst blijven bestaan, gebruik daarom dus de csv bestanden.
 
