@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
 from pathlib import Path
 
 
@@ -68,6 +69,7 @@ df_intervals.to_csv('data/estimated_dose_interval.csv')
 
 style = ['-'] * (df_intervals.columns.shape[0] - 1) + ['o']
 ax = df_intervals.plot(grid=True, style=style, figsize=(8,4), alpha=.7)
+ax.xaxis.set_major_locator(MaxNLocator(integer=True))
 ax.set_title('KNN Estimated dose interval')
 ax.set_ylabel('days')
 
