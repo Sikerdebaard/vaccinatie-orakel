@@ -60,4 +60,7 @@ df_merged.sort_index(inplace=True)
 df_merged = df_merged[df_merged.index >= df_ensemble.index[0]]
 ax = df_merged.plot(style=['o', '-', '-'], grid=True)
 ax.set_title('Fully vaccinated ensemble vs. divide-by-two strategy')
-ax.get_figure().savefig('data/comparison-ensemble-vs-divbytwo.png', dpi=300)
+
+fig = ax.get_figure()
+fig.tight_layout()
+fig.savefig('data/comparison-ensemble-vs-divbytwo.png', dpi=300)
