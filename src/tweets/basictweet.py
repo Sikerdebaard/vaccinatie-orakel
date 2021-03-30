@@ -42,6 +42,7 @@ def generate():
     two_random_handles = random.sample(twitter_handles, 2)
     headers = [
         f'🧙✨🔮 Het orakel kijkt diep in de kristallen bol en ziet daar een grafiek verschijnen.',
+        f'🧙✨🔮 Rook, vuur en lasereffecten! Het orakel verschijnt.',
         f'🧙✨🔮 Het orakel kijkt diep in de kristallen bol. {two_random_handles[0]} denkt er zo over en {two_random_handles[1]} weer net wat anders.',
     ]
     
