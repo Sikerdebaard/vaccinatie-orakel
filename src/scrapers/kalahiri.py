@@ -12,9 +12,11 @@ req.raise_for_status()
 
 data = req.json()['NL']
 
-# Dutch number format to machine-readable
+# format conversion
 for k, v in data.items():
-    data[k] = v.replace('.', '').replace(',', '.')
+    if isinstance(v, dict):
+        data[k] = v['value']
+    #data[k] = v.replace('.', '').replace(',', '.')
     
 
 cols = ['persons_fully_vaccinated', 'persons_single_dose']
