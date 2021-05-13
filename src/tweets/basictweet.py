@@ -39,8 +39,14 @@ def generate():
     pct_vaccinated = latest_people_vaccinated / popsize * 100
     pct_grownups = latest_people_vaccinated / grownups * 100
     
+    if pct_grownups > 100:
+        pct_grownups = 100
+    
     pct_fully_vaccinated = latest_people_fully_vaccinated / popsize * 100
     pct_fully_grownups = latest_people_fully_vaccinated / grownups * 100
+    
+    if pct_fully_grownups > 100:
+        pct_fully_grownups = 100
 
     twitter_handles = ['@covid_nl', '@kalahiri', '@YorickB']
     two_random_handles = random.sample(twitter_handles, 2)
@@ -58,7 +64,7 @@ Gevaccineerd met ten minste een dosis:
 {progressbar(pct_grownups)} van de volwassenen""".strip()
     
     tweet2 = f"""
-Volledig gevaccineerd, alle doses van een vaccin ontangen:
+Volledig gevaccineerd, alle doses van een vaccin ontvangen:
 {progressbar(pct_fully_vaccinated)} van de Nederlanders
 
 {progressbar(pct_fully_grownups)} van de volwassenen""".strip()
