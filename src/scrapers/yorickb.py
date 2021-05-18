@@ -18,14 +18,16 @@ outfile = outdir / 'yorickb.csv'
 if outfile.exists():
     df_estimates = pd.read_csv(outfile, index_col=0)
     df_estimates.index = pd.to_datetime(df_estimates.index)
+    
+    print(f'Loaded {outfile}')
 else:
     df_estimates = pd.DataFrame(index=pd.to_datetime([]))
-
+    
 for csvfile in csvfiles:
     if 'vaccine-data' not in csvfile:
         print('Skipping', csvfile)
         continue
-
+        
     print(csvfile)
 
     df = pd.read_csv(f'{baseurl}{csvfile}', index_col=0)
@@ -36,6 +38,7 @@ for csvfile in csvfiles:
     row = df.loc[idx][cols]
 
     if idx not in df_estimates.index or idx.date() == pd.to_datetime('today').date():
+        print(f'Updating {idx}')
         for col in cols:
             df_estimates.at[idx, col] = row[col]
 
