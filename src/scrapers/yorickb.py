@@ -30,14 +30,14 @@ for csvfile in csvfiles:
         
     print(csvfile)
 
-    df = pd.read_csv(f'{baseurl}{csvfile}', index_col=0)
+    df = pd.read_csv(f'{baseurl}{csvfile}', index_col='date')
     df.index = pd.to_datetime(df.index)
     df.sort_index(inplace=True)
 
     idx = df.index[-1]
     row = df.loc[idx][cols]
 
-    if idx not in df_estimates.index or idx.date() == pd.to_datetime('today').date():
+    if idx not in df_estimates.index or idx.date() >= (pd.to_datetime('today') - pd.Timedelta(days=1)).date():
         print(f'Updating {idx}')
         for col in cols:
             df_estimates.at[idx, col] = row[col]
