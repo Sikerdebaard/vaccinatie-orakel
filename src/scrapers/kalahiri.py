@@ -19,19 +19,20 @@ for k, v in data.items():
     #data[k] = v.replace('.', '').replace(',', '.')
     
 
-cols = ['persons_fully_vaccinated', 'persons_single_dose']
+cols = ['persons_fully_vaccinated', 'persons_single_dose', 'persons_at_least_one_dose', 'total_doses']
 df = pd.DataFrame.from_dict(data, orient='index').T.set_index('date')[cols]
 df.index = [x.replace(year=2021) for x in pd.to_datetime(df.index, format='%d/%m')]
 
 df = df.rename(columns={
     'persons_fully_vaccinated': 'people_fully_vaccinated',
-    #'persons_single_dose': 'people_vaccinated',
+    'persons_at_least_one_dose': 'people_vaccinated',
+    'total_doses': 'total_vaccinations',
 })
 
 df = df.astype(float)
-df['people_vaccinated'] = df[['people_fully_vaccinated', 'persons_single_dose']].sum(axis=1)
+#df['people_vaccinated'] = df[['people_fully_vaccinated', 'persons_single_dose']].sum(axis=1)
 df = df.drop(columns=['persons_single_dose'])
-df['total_vaccinations'] = df.sum(axis=1)
+#df['total_vaccinations'] = df.sum(axis=1)
 df = df.astype(pd.Int64Dtype())
 df.index = df.index - pd.Timedelta(days=1)
 
