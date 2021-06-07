@@ -3,6 +3,18 @@ import random
 import pandas as pd
 from utils.formatting import progressbar
 from utils.plotting import pie_for_pct
+import requests
+
+
+def _latest_year_tweet():
+    req = requests.get('https://raw.githubusercontent.com/Sikerdebaard/vaccination-booking-slots/main/latest-tweet.json')
+    req.raise_for_status()
+
+    tweetid = req.json()['id']
+
+    message = f"""👇👇👇 https://twitter.com/covid_nl/status/{tweetid}"""
+
+    return message
 
 def generate():
     data = cbsodata.get_data('7461bev')
@@ -69,4 +81,4 @@ Volledig gevaccineerd, alle doses van een vaccin ontvangen:
 
 {progressbar(pct_fully_grownups)} van de volwassenen""".strip()
     
-    return [tweet, tweet2, 'https://twitter.com/vaccinorakel/status/1367747721671675910'], [[]]
+    return [tweet, tweet2, _latest_year_tweet(), 'https://twitter.com/vaccinorakel/status/1367747721671675910'], [[]]
