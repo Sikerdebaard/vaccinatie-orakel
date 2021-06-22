@@ -10,7 +10,7 @@ csvfiles = list(sorted(csvfiles))
 
 baseurl = 'https://raw.githubusercontent.com/YorickBleijenberg/COVID_data_RIVM_Netherlands/master/vaccination/daily-dashboard-update/'
 
-cols = ['people_vaccinated', 'people_fully_vaccinated']
+cols = ['people_vaccinated', 'people_fully_vaccinated', 'total_vaccinations']
 
 outdir = Path('data/models')
 outfile = outdir / 'yorickb.csv'
@@ -32,6 +32,7 @@ for csvfile in csvfiles:
 
     df = pd.read_csv(f'{baseurl}{csvfile}', index_col='date')
     df.index = pd.to_datetime(df.index)
+    df.rename(columns={'total_estimated': 'total_vaccinations'}, inplace=True)
     df.sort_index(inplace=True)
 
     idx = df.index[-1]
@@ -43,7 +44,8 @@ for csvfile in csvfiles:
             df_estimates.at[idx, col] = row[col]
 
 
-df_estimates['total_vaccinations'] = df_estimates.sum(axis=1)
+#df_estimates['total_vaccinations'] = df_estimates.sum(axis=1)
+#df_estimates = df_estimates.rename(columns={'total_estimated': 'total_vaccinations'})
 
 df_estimates = df_estimates.astype(pd.Int64Dtype())
 
