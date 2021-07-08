@@ -35,6 +35,7 @@ def generate():
     popsize = df['Bevolking_1'].sum().astype(int)
     grownups = df[df['Leeftijd'] >= 18]['Bevolking_1'].sum().astype(int)
     children = df[df['Leeftijd'] < 18]['Bevolking_1'].sum().astype(int)
+    vaccgroup = df[df['Leeftijd'] >= 12]['Bevolking_1'].sum().astype(int)
 
     assert (grownups + children) == popsize
 
@@ -50,15 +51,17 @@ def generate():
 
     pct_vaccinated = latest_people_vaccinated / popsize * 100
     pct_grownups = latest_people_vaccinated / grownups * 100
+    pct_vaccgroup = latest_people_vaccinated / vaccgroup * 100
     
-    if pct_grownups > 100:
-        pct_grownups = 100
+    if pct_vaccgroup > 100:
+        pct_vaccgroup = 100
     
     pct_fully_vaccinated = latest_people_fully_vaccinated / popsize * 100
     pct_fully_grownups = latest_people_fully_vaccinated / grownups * 100
+    pct_fully_vaccgroup = latest_people_fully_vaccinated / vaccgroup * 100
     
-    if pct_fully_grownups > 100:
-        pct_fully_grownups = 100
+    if pct_fully_vaccgroup > 100:
+        pct_fully_vaccgroup = 100
 
     twitter_handles = ['@covid_nl', '@kalahiri', '@YorickB']
     two_random_handles = random.sample(twitter_handles, 2)
@@ -73,12 +76,12 @@ def generate():
 Gevaccineerd met ten minste een dosis:
 {progressbar(pct_vaccinated)} van de Nederlanders
 
-{progressbar(pct_grownups)} van de volwassenen""".strip()
+{progressbar(pct_vaccgroup)} van de 12+-ers""".strip()
     
     tweet2 = f"""
 Volledig gevaccineerd, alle doses van een vaccin ontvangen:
 {progressbar(pct_fully_vaccinated)} van de Nederlanders
 
-{progressbar(pct_fully_grownups)} van de volwassenen""".strip()
+{progressbar(pct_fully_vaccgroup)} van de 12+-ers""".strip()
     
     return [tweet, tweet2, _latest_year_tweet(), 'https://twitter.com/vaccinorakel/status/1367747721671675910'], [[]]
