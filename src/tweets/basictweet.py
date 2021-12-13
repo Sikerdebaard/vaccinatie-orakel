@@ -86,4 +86,4 @@ Volledig gevaccineerd, alle doses van een vaccin ontvangen:
     
     shutdownmsg = """Deze bot wordt op 19 december uitgeschakeld. Volg @yorickb @kalahiri @covid_nl voor meer updates."""
     
-    return [tweet, tweet2, _latest_year_tweet(), 'https://twitter.com/vaccinorakel/status/1367747721671675910'], [[]]
+    return [tweet, tweet2, _latest_year_tweet(), 'https://twitter.com/vaccinorakel/status/1367747721671675910', shutdownmsg], [[]]
