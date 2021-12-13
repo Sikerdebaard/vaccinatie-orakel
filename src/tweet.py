@@ -14,6 +14,10 @@ if ams_now.time() < time(hour=20, minute=30):
     print('Its not past 20:30 yet in AMS')
     raise SystemExit(0)
 
+if pd.to_datetime('today').date() > pd.to_datetime('2021-12-19').date():
+    print('Bot shutdown, please disable github actions')
+    raise SystemExit(100)
+
 
 tweetscachefile = Path('data/oracle-tweets.json')
 
